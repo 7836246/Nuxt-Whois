@@ -9,7 +9,7 @@ const isOpen = ref(false)
   <div>
       <div title="Change Color">
         <div
-            class="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-700"
+            class="cursor-pointer	flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-700"
             @click="isOpen = true"
         >
           <Icon name="mdi:about-circle-outline" class=" text-lg dark:text-white" />

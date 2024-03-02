@@ -2,10 +2,8 @@
 import {ParseWhois} from "~/utils/whoisToJson";
 import {AdjustTimeToUTCOffset} from "~/utils/utc";
 import {useTimeStore} from "~/stores/time";
+import {useStyleStore} from "~/stores/style";
 
-definePageMeta({
-  layout: 'result',
-})
 const route = useRoute();
 const {domain} = route.params;
 
@@ -24,7 +22,8 @@ const {data, pending, error, refresh} = await useAsyncData(
 const parsedInfo = ParseWhois(data.value);
 const showRawData = ref(false);
 const timeStore = useTimeStore()
-
+const styleStore = useStyleStore()
+styleStore.setIsPage(true)
 useHead({
   title: `${domainData} - ${t('result.title')}`,
   meta: [
@@ -39,7 +38,6 @@ useHead({
 
 <template>
   <table
-      v-if="parsedInfo.registrar"
       class="w-full bg-[#fffffe] p-4 shadow-lg rounded-lg mt-5 dark:bg-gray-800 dark:text-gray-200 text-white hover:bg-none">
     <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
     <tr class="hover:bg-gray-100 text-gray-900 dark:hover:bg-gray-700 text-gray-200">
@@ -105,7 +103,7 @@ useHead({
   </table>
 
   <!-- 公告部分 -->
-  <CommonBulletin v-else class="mt-5"  >
+  <CommonBulletin v-if="error" class="mt-5"  >
     <template #text>
       <Icon name="bx:error" size="16px" color="red" />
       {{ t('error.notFound') }}

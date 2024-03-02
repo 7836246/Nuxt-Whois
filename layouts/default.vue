@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {SupportedTLDs} from "~/utils/domain";
+import {useStyleStore} from "~/stores/style";
 
 const { t } = useI18n()
 
@@ -9,72 +10,94 @@ const state = reactive({
 
 const toast = useToast();
 const router = useRouter();
-const handleAction = async (event: any) => {
-  // 先拿到并处理域名
-  const domain = state.domain.trim();
 
-  // 分割域名为各部分
-  const parts = domain.split('.');
+const runtimeConfig = useRuntimeConfig()
 
-  // 需要一个更严格的检查来确认域名格式是否正确
-  if (parts.length < 2) {
-    toast.add({
-      title: '域名格式不正确',
-    });
-    return;
-  }
+const handleAction = async (url: any) => {
+  if (!state.domain) return toast.add({ title: '请输入域名' })
+  let domain = trimDomain(state.domain);
+  const parts = splitDomain(domain);
 
-  // 获取最后两个部分作为可能的顶级域名（TLD）
-  const potentialTLD = parts.slice(-2).join('.');
+  if (!validateDomain(parts) || !isTLDValid(parts)) return;
 
-  // 判断后缀是否合法
-  if (!SupportedTLDs.has(parts.slice(-1)[0]) && !SupportedTLDs.has(potentialTLD)) {
-    toast.add({
-      title: '域名后缀不合法',
-    });
-    return;
-  }
+  domain = updateDomainForTLD(parts);
+  state.domain = domain;
 
-  // 确定是否是二级顶级域名
-  let domainToKeep = domain;
-  if (SupportedTLDs.has(potentialTLD)) {
-    // 如果是二级顶级域名，保留最后三个部分
-    domainToKeep = parts.length > 2 ? parts.slice(-3).join('.') : domain;
-  } else {
-    // 否则，只保留最后两个部分
-    domainToKeep = parts.slice(-2).join('.');
-  }
-
-  // 更新state.domain为只包含顶级域名的版本
-  state.domain = domainToKeep;
-
-  // 跳转到结果页
-  await router.push('/result/' + state.domain.replace(/\./g, '_') + '.html');
+  await router.push(`/${url}/${state.domain.replace(/\./g, '_')}.html`);
 }
 
-const timeStore = useTimeStore()
+
+const trimDomain = (domain: string): string => {
+  return domain.trim();
+}
+
+const splitDomain = (domain: string): string[] => {
+  return domain.split('.');
+}
+
+
+const validateDomain = (parts: string[]): boolean => {
+  if (parts.length < 2) {
+    toast.add({ title: '域名格式不正确' });
+    return false;
+  }
+  return true;
+}
+
+const isTLDValid = (parts: string[]): boolean => {
+  const potentialTLD = parts.slice(-2).join('.');
+  if (!SupportedTLDs.has(parts.slice(-1)[0]) && !SupportedTLDs.has(potentialTLD)) {
+    toast.add({ title: '域名后缀不合法' });
+    return false;
+  }
+  return true;
+}
+
+const updateDomainForTLD = (parts: string[]): string => {
+  const potentialTLD = parts.slice(-2).join('.');
+  let domainToKeep: string;
+  if (SupportedTLDs.has(potentialTLD)) {
+    domainToKeep = parts.length > 2 ? parts.slice(-3).join('.') : parts.join('.');
+  } else {
+    domainToKeep = parts.slice(-2).join('.');
+  }
+  return domainToKeep;
+}
+
+const styleStore = useStyleStore()
+const clientMounted = ref(false);
+
+onMounted(() => {
+  clientMounted.value = true;
+});
 </script>
 
 <template>
-  <div class="w-full h-[90vh] text-xs bg-[#F1F3F4] dark:bg-transparent">
-    <div class=" max-w-screen-lg mx-auto pt-[25vh] px-[1em] pb-[10vh] ">
+  <div
+      class="w-full text-xs bg-[#F1F3F4] dark:bg-transparent"
+      :class="{ 'h-[90vh]': !styleStore.isPage && clientMounted }"
+  >
+    <div
+        class=" max-w-screen-lg mx-auto px-[1em] pb-[10vh] "
+        :class="{ 'pt-[25vh]': !styleStore.isPage && clientMounted, 'pt-[5vh]': styleStore.isPage || !clientMounted }"
+    >
       <nav class=" w-full text-[#464747] h-5 dark:bg-gray-700">
         <NuxtLink class="mb-3 font-bold text-2xl inline-block text-current no-underline dark:text-white"
                   to="/"
         >
-          <h1 class="inline-block text-current no-underline dark:text-white">Nuxt Whois</h1>
-          <sup class="text-[#59a8d7] dark:text-[#ace4f8]">COM</sup>
+          <h1 class="inline-block text-current no-underline dark:text-white">{{ runtimeConfig?.public?.Domain }}</h1>
+          <sup class="text-[#59a8d7] dark:text-[#ace4f8]">{{ runtimeConfig?.public?.DomainSuffix }}</sup>
         </NuxtLink>
       </nav>
       <div class="mt-6">
         <UForm :state="state"
                class="flex items-center space-x-2 mb-3 dark:text-white"
-               @submit="handleAction">
+               @submit="handleAction('whois')">
           <!-- 容器div用于水平布局 -->
           <div class="flex-grow">
             <UInput
                 v-model="state.domain"
-                placeholder="输入域名"
+                :placeholder="t('index.placeholder')"
                 color="sky"
                 size="xl"
                 class="w-full " />
@@ -86,28 +109,8 @@ const timeStore = useTimeStore()
         </UForm>
       </div>
      <CommonBulletin :text="`➡️ ${t('index.tips') }`" />
-      <ClientOnly>
-      <div class="flex justify-between w-full">
-        <div>
-          <!-- 左边的新元素 -->
-          <UTooltip text="支持列表" :popper="{ placement: 'top' }">
-            <CommonDomainList />
-          </UTooltip>
-        </div>
-        <div class="flex space-x-2">
-          <!-- 右边的现有元素 -->
-            <UTooltip :text="timeStore.timeZones" :popper="{ placement: 'top' }">
-              <CommonTimeZonesChange />
-            </UTooltip>
-            <UTooltip text="主题模式" :popper="{ placement: 'top' }">
-              <CommonColorChange />
-            </UTooltip>
-            <UTooltip text="切换语言" :popper="{ placement: 'top' }">
-              <CommonLanguageChange />
-            </UTooltip>
-        </div>
-      </div>
-      </ClientOnly>
+
+      <TabList @action="handleAction"  />
       <slot />
     </div>
   </div>

@@ -2,6 +2,7 @@ export default defineI18nLocale(async locale => {
     return {
         index: {
             tips: 'The information you submit for your query will not be recorded!',
+            placeholder: 'Please enter a domain name',
         },
         error:{
             formatDomain: 'Error formatting domain name',

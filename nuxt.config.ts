@@ -2,12 +2,19 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
+    '@nuxt/devtools',
     '@nuxt/ui',
     '@nuxtjs/i18n',
     'nuxt-headlessui',
     '@pinia/nuxt', // needed
     '@pinia-plugin-persistedstate/nuxt',
   ],
+  runtimeConfig: {
+      public: {
+          Domain: 'Nuxt Whois',
+          DomainSuffix: 'Dns',
+      }
+  },
   app:{
     head: {
         title: 'Nuxt Whois',
