@@ -10,7 +10,7 @@ const handleActionFromDnsList = (urlParam:string) => {
 <template>
   <ClientOnly>
     <div class="flex justify-between w-full">
-      <div>
+      <div class="space-x-2">
         <!-- 左边的新元素 -->
         <UTooltip text="支持列表" :popper="{ placement: 'top' }">
           <CommonDomainList  />
