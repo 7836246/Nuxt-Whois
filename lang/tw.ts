@@ -3,12 +3,12 @@ export default defineI18nLocale(async locale => {
         app: {
             title: 'Nuxt Whois',
         },
-        whois:{
+        whois: {
             title: 'Whois查詢',
             description: '查詢{domain}的Whois信息，包括註冊者聯繫方式、域名狀態、DNS記錄等詳細信息。快速、準確地獲取域名所有權和註冊信息。',
             keywords: 'Whois查詢, {domain}, 域名信息, 域名所有者, 域名註冊信息'
         },
-        dns:{
+        dns: {
             title: 'DNS查詢',
             description: '查詢{domain}的DNS記錄，包括A記錄、AAAA記錄、CNAME記錄、MX記錄、NS記錄、TXT記錄等。',
             keywords: 'DNS查詢, {domain}, 域名解析, 域名解析記錄'
@@ -21,7 +21,7 @@ export default defineI18nLocale(async locale => {
             description: '提供域名WHOIS查詢、域名DNS查詢、域名註冊商查詢、域名註冊信息查詢等服務',
             keywords: '域名whois查詢,whois查詢,whois信息查詢,whois查詢工具,whois查詢網站,whois查詢api,whois查詢接口',
         },
-        error:{
+        error: {
             formatDomain: '域名格式錯誤',
             validDomain: '域名必須包含有效的頂級域',
             notFound: '未找到域名資料',
@@ -81,6 +81,20 @@ export default defineI18nLocale(async locale => {
             title: 'Whois關鍵信息提取API',
             description: '提取域名WHOIS信息中的關鍵信息，包括註冊商、註冊日期、到期日期、DNS、狀態等。',
             keywords: '域名whois查詢,whois查詢,whois信息查詢,whois查詢工具,whois查詢網站,whois查詢api,whois查詢接口',
+        },
+        popper: {
+            //支援列表
+            support: '支援列表',
+            //查詢歷史
+            history: '查詢歷史',
+            //Dns查詢
+            dns: 'DNS查詢',
+            //網站設定
+            setting: '網站設定',
+            //主題模式
+            theme: '主題模式',
+            //語言設定
+            language: '語言設定',
         }
     }
 })

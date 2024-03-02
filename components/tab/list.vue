@@ -5,6 +5,7 @@ const emit = defineEmits(['action'])
 const handleActionFromDnsList = (urlParam:string) => {
   emit('action', urlParam)
 }
+const {t} = useI18n()
 </script>
 
 <template>
@@ -12,23 +13,30 @@ const handleActionFromDnsList = (urlParam:string) => {
     <div class="flex justify-between w-full">
       <div class="space-x-2">
         <!-- 左边的新元素 -->
-        <UTooltip text="支持列表" :popper="{ placement: 'top' }">
+        <UTooltip :text="t('popper.support')" :popper="{ placement: 'top' }">
           <CommonDomainList  />
         </UTooltip>
 
-        <UTooltip text="Dns查询" :popper="{ placement: 'top' }">
+        <UTooltip :text="t('popper.history')" :popper="{ placement: 'top' }">
+          <CommonHistory  />
+        </UTooltip>
+
+        <UTooltip :text="t('popper.dns')" :popper="{ placement: 'top' }">
           <CommonDnsList @action="handleActionFromDnsList" />
         </UTooltip>
       </div>
       <div class="flex space-x-2">
         <!-- 右边的现有元素 -->
+        <UTooltip :text="t('popper.setting')" :popper="{ placement: 'top' }">
+          <CommonSettingsChange />
+        </UTooltip>
         <UTooltip :text="timeStore.timeZones" :popper="{ placement: 'top' }">
           <CommonTimeZonesChange />
         </UTooltip>
-        <UTooltip text="主题模式" :popper="{ placement: 'top' }">
+        <UTooltip :text="t('popper.theme')" :popper="{ placement: 'top' }">
           <CommonColorChange />
         </UTooltip>
-        <UTooltip text="切换语言" :popper="{ placement: 'top' }">
+        <UTooltip :text="t('popper.language')" :popper="{ placement: 'top' }">
           <CommonLanguageChange />
         </UTooltip>
       </div>

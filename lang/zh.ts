@@ -85,6 +85,20 @@ export default defineI18nLocale(async locale => {
             title: 'Whois关键信息提取API',
             description: '提取域名WHOIS信息中的关键信息，包括注册商、注册日期、到期日期、DNS、状态等。',
             keywords: '域名whois查询,whois查询,whois信息查询,whois查询工具,whois查询网站,whois查询api,whois查询接口',
+        },
+        popper: {
+            //支持列表
+            support: '支持列表',
+            //查询历史
+            history: '查询历史',
+            //Dns查询
+            dns: 'Dns查询',
+            //网站设置
+            setting: '网站设置',
+            //主题模式
+            theme: '主题模式',
+            //语言设置
+            language: '切换语言',
         }
     }
 })

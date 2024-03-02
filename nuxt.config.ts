@@ -9,6 +9,9 @@ export default defineNuxtConfig({
     '@pinia/nuxt', // needed
     '@pinia-plugin-persistedstate/nuxt',
   ],
+  features:{
+      inlineStyles: true,
+  } ,
   runtimeConfig: {
       public: {
           Domain: 'Nuxt Whois',

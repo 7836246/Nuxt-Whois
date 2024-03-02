@@ -81,6 +81,17 @@ export default defineI18nLocale(async locale => {
             title: 'Whois Key Information Extraction API',
             description: 'Extract key information from domain WHOIS information, including registrar, creation date, expiration date, DNS, status, etc.',
             keywords: 'Domain whois query, whois query, whois information query, whois query tool, whois query website, whois query api, whois query interface',
+        },
+        popper: {
+            //支持列表
+            support: 'Support List',
+            //history
+            history: 'Query History',
+            //支持的DNS服务器列表
+            dns: 'Supported DNS Server List',
+            setting: 'Website Settings',
+            theme: 'Theme',
+            language: 'Language',
         }
     }
 })
