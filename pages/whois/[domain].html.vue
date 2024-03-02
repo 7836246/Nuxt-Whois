@@ -11,6 +11,12 @@ const {t} = useI18n()
 
 const domainData = domain.replace(/_/g, '.')
 
+const showRawData = ref(false);
+const timeStore = useTimeStore()
+const styleStore = useStyleStore()
+
+const localePath = useLocalePath()
+
 const {data, pending, error, refresh} = await useAsyncData(
     'mountains',
     () => $fetch('/api/whois', {
@@ -19,12 +25,20 @@ const {data, pending, error, refresh} = await useAsyncData(
     })
 )
 
-const parsedInfo = ParseWhois(data.value);
-const showRawData = ref(false);
-const timeStore = useTimeStore()
-const styleStore = useStyleStore()
-styleStore.setIsPage(true)
+if (!error.value) {
+  styleStore.addOrUpdateHistory(
+      {
+        id: domainData,
+        type: 'whois',
+        domain: domainData,
+        path: localePath(`/whois/${domain}.html`),
+        date: AdjustTimeToUTCOffset(new Date().toString(), timeStore.timeZones)
+      }
+  )
+}
 
+const parsedInfo = ParseWhois(data.value);
+styleStore.setIsPage(true)
 useHead({
   title: `${domainData} - ${t('whois.title')}`,
   meta: [
@@ -37,7 +51,6 @@ useHead({
     }
   ]
 })
-
 </script>
 
 <template>

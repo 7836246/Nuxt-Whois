@@ -78,11 +78,11 @@ onMounted(() => {
 <template>
   <div
       class="w-full text-xs bg-[#F1F3F4] dark:bg-transparent"
-      :class="{ 'h-[90vh]': !styleStore.isPage && clientMounted }"
+      :class="{ 'h-[90vh]': !styleStore.getIsPage && clientMounted }"
   >
     <div
         class=" max-w-screen-lg mx-auto px-[1em] pb-[10vh] "
-        :class="{ 'pt-[25vh]': !styleStore.isPage && clientMounted, 'pt-[5vh]': styleStore.isPage || !clientMounted }"
+        :class="{ 'pt-[25vh]': !styleStore.getIsPage && clientMounted, 'pt-[5vh]': styleStore.getIsPage || !clientMounted }"
     >
       <nav class=" w-full text-[#464747] h-5 dark:bg-gray-700">
         <NuxtLink class="mb-3 font-bold text-2xl inline-block text-current no-underline dark:text-white"

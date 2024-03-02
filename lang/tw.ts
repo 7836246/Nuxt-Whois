@@ -11,7 +11,15 @@ export default defineI18nLocale(async locale => {
         dns: {
             title: 'DNS查詢',
             description: '查詢{domain}的DNS記錄，包括A記錄、AAAA記錄、CNAME記錄、MX記錄、NS記錄、TXT記錄等。',
-            keywords: 'DNS查詢, {domain}, 域名解析, 域名解析記錄'
+            keywords: 'DNS查詢, {domain}, 域名解析, 域名解析記錄',
+            //DNS查詢結果
+            dnsResult: 'DNS查詢結果',
+            //A記錄
+            aRecord: 'A記錄',
+            //NS記錄
+            nsRecord: 'NS記錄',
+            //SOA記錄
+            soaRecord: 'SOA記錄',
         },
         index: {
             tips: '您提交的查詢信息不會被記錄！',

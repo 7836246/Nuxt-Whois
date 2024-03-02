@@ -11,7 +11,15 @@ export default defineI18nLocale(async locale => {
         dns:{
             title: 'DNS Query',
             description: 'Query the DNS records of {domain}, including A records, AAAA records, CNAME records, MX records, NS records, TXT records, etc.',
-            keywords: 'DNS query, {domain}, domain resolution, domain resolution record'
+            keywords: 'DNS query, {domain}, domain resolution, domain resolution record',
+            //DNS query result
+            dnsResult: 'DNS query result',
+            //A record
+            aRecord: 'A record',
+            //NS record
+            nsRecord: 'NS record',
+            //SOA record
+            soaRecord: 'SOA record',
         },
         index: {
             tips: 'The information you submit for your query will not be recorded!',

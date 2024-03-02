@@ -11,13 +11,21 @@ export default defineI18nLocale(async locale => {
         dns:{
             title: 'DNS查询',
             description: '查询{domain}的DNS记录，包括A记录、AAAA记录、CNAME记录、MX记录、NS记录、TXT记录等。',
-            keywords: 'DNS查询, {domain}, 域名解析, 域名解析记录'
+            keywords: 'DNS查询, {domain}, 域名解析, 域名解析记录',
+            //DNS查询结果
+            dnsResult: 'DNS查询结果',
+            //A记录
+            aRecord: 'A记录',
+            //NS记录
+            nsRecord: 'NS记录',
+            //SOA记录
+            soaRecord: 'SOA记录',
         },
         index: {
             tips: '您提交的查询信息不会被记录！',
             placeholder: '请输入域名',
             onSubmit: '提交',
-            title: 'WHOIS与Dns查询工具网站',
+            title: 'Whois与Dns查询工具网站',
             description: '提供域名WHOIS查询、域名DNS查询、域名注册商查询、域名注册信息查询等服务',
             keywords: '域名whois查询,whois查询,whois信息查询,whois查询工具,whois查询网站,whois查询api,whois查询接口',
         },
