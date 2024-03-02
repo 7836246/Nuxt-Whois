@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     'nuxt-headlessui',
     '@pinia/nuxt', // needed
     '@pinia-plugin-persistedstate/nuxt',
+    'nuxt-simple-robots',
   ],
   features:{
       inlineStyles: true,
