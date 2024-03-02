@@ -3,6 +3,7 @@ export default defineI18nLocale(async locale => {
         index: {
             tips: '您提交的查詢信息不會被記錄！',
             placeholder: '請輸入域名',
+            onSubmit: '提交',
         },
         error:{
             formatDomain: '域名格式錯誤',

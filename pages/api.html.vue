@@ -2,6 +2,7 @@
 definePageMeta({
   layout: 'empty',
 })
+const localePath = useLocalePath()
 </script>
 
 <template>
@@ -9,7 +10,7 @@ definePageMeta({
     <div class="overflow-hidden shadow-md rounded-lg">
       <div class="px-6 py-4 bg-red-500 text-white font-bold uppercase">
         <div class="flex items-center justify-between">
-          <NuxtLink to="/" class="hover:text-white">
+          <NuxtLink :to="localePath('/')" class="hover:text-white">
             <Icon name="ic:outline-home" class="h-6 w-6" /> <!-- 调整图标大小 -->
           </NuxtLink>
           <span>Whois关键信息提取API</span>

@@ -12,6 +12,8 @@ const toast = useToast();
 const router = useRouter();
 
 const runtimeConfig = useRuntimeConfig()
+const localePath = useLocalePath()
+
 
 const handleAction = async (url: any) => {
   if (!state.domain) return toast.add({ title: '请输入域名' })
@@ -23,7 +25,7 @@ const handleAction = async (url: any) => {
   domain = updateDomainForTLD(parts);
   state.domain = domain;
 
-  await router.push(`/${url}/${state.domain.replace(/\./g, '_')}.html`);
+  await router.push(localePath(`/${url}/${state.domain.replace(/\./g, '_')}.html`));
 }
 
 
@@ -67,6 +69,7 @@ const updateDomainForTLD = (parts: string[]): string => {
 const styleStore = useStyleStore()
 const clientMounted = ref(false);
 
+
 onMounted(() => {
   clientMounted.value = true;
 });
@@ -83,7 +86,7 @@ onMounted(() => {
     >
       <nav class=" w-full text-[#464747] h-5 dark:bg-gray-700">
         <NuxtLink class="mb-3 font-bold text-2xl inline-block text-current no-underline dark:text-white"
-                  to="/"
+                  :to="localePath('/')"
         >
           <h1 class="inline-block text-current no-underline dark:text-white">{{ runtimeConfig?.public?.Domain }}</h1>
           <sup class="text-[#59a8d7] dark:text-[#ace4f8]">{{ runtimeConfig?.public?.DomainSuffix }}</sup>
@@ -104,7 +107,7 @@ onMounted(() => {
           </div>
           <!-- 使用v-if或v-show基于state.domain的值来控制按钮的显示 -->
           <UButton type="submit" color="sky" size="xl" v-if="state.domain">
-            提交
+            {{ t('index.onSubmit') }}
           </UButton>
         </UForm>
       </div>
