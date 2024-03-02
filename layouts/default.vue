@@ -108,7 +108,10 @@ onMounted(() => {
           </UButton>
         </UForm>
       </div>
-     <CommonBulletin :text="`➡️ ${t('index.tips') }`" />
+     <CommonBulletin
+         v-if="!styleStore.isPage && clientMounted"
+         :text="`➡️ ${t('index.tips') }`"
+     />
 
       <TabList @action="handleAction"  />
       <slot />
