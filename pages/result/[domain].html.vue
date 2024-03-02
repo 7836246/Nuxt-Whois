@@ -3,6 +3,9 @@ import {ParseWhois} from "~/utils/whoisToJson";
 import {AdjustTimeToUTCOffset} from "~/utils/utc";
 import {useTimeStore} from "~/stores/time";
 
+definePageMeta({
+  layout: 'result',
+})
 const route = useRoute();
 const {domain} = route.params;
 
