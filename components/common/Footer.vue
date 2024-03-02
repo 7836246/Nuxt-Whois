@@ -4,7 +4,7 @@ const {t} = useI18n()
 </script>
 <template>
   <footer class="text-gray-800 h-[10vh] bg-[#F1F3F4] dark:text-white  dark:bg-[#5b77af]">
-    <div class="max-w-4xl mx-auto py-4 px-4 flex justify-between items-center">
+    <div class="max-w-5xl mx-auto py-4 px-4 flex justify-between items-center">
       <div class="text-sm">
         {{ t('footer.text')}}
       </div>
