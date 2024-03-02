@@ -3,6 +3,19 @@ definePageMeta({
   layout: 'empty',
 })
 const localePath = useLocalePath()
+const {t} = useI18n()
+useHead({
+  title: t('api.title'),
+  meta: [
+    {
+      name: 'description',
+      content: t('api.description')
+    },{
+      name: 'keywords',
+      content: t('api.keywords')
+    }
+  ]
+})
 </script>
 
 <template>
@@ -13,14 +26,14 @@ const localePath = useLocalePath()
           <NuxtLink :to="localePath('/')" class="hover:text-white">
             <Icon name="ic:outline-home" class="h-6 w-6" /> <!-- 调整图标大小 -->
           </NuxtLink>
-          <span>Whois关键信息提取API</span>
+          <span>{{ t('api.h1') }}</span>
           <span></span> <!-- 占位符以保持标题居中 -->
         </div>
       </div>
 
     <div class="p-6">
         <div class="grid grid-cols-3 gap-4 mb-4">
-          <div class="font-semibold">接口地址</div>
+          <div class="font-semibold">{{ t('api.url') }}</div>
           <div class="col-span-2">/api/whois</div>
         </div>
 <!--        <div class="grid grid-cols-3 gap-4 mb-4">-->
@@ -28,26 +41,26 @@ const localePath = useLocalePath()
 <!--          <div class="col-span-2"><span class="count">156</span> 次</div>-->
 <!--        </div>-->
         <div class="grid grid-cols-3 gap-4 mb-4">
-          <div class="font-semibold">请求方式</div>
+          <div class="font-semibold">{{ t('api.method') }}</div>
           <div class="col-span-2">POST</div>
         </div>
         <div class="grid grid-cols-3 gap-4 mb-4">
-          <div class="font-semibold">返回格式</div>
+          <div class="font-semibold">{{ t('api.params') }}</div>
           <div class="col-span-2">String</div>
         </div>
       </div>
       <div class="px-6 py-4 border-t border-gray-200">
-        <div class="font-bold mb-2">输入参数</div>
+        <div class="font-bold mb-2">{{ t('api.input') }}</div>
         <div class="grid grid-cols-3 gap-4 mb-4">
-          <div class="font-semibold">名称</div>
-          <div class="font-semibold">类型</div>
-          <div class="font-semibold">描述</div>
+          <div class="font-semibold">{{ t('api.name') }}</div>
+          <div class="font-semibold">{{ t('api.type') }}</div>
+          <div class="font-semibold">{{ t('api.desc') }}</div>
         </div>
         <!-- 参数列表 -->
         <div class="grid grid-cols-3 gap-4 mb-4">
           <div>domain</div>
           <div>string</div>
-          <div>(必选) 域名</div>
+          <div>({{ t('api.required') }}) {{ t('api.domain') }}</div>
         </div>
 <!--        <div class="grid grid-cols-3 gap-4 mb-4">-->
 <!--          <div>whois</div>-->
@@ -66,8 +79,8 @@ const localePath = useLocalePath()
 <!--        </div>-->
       </div>
       <div class="px-6 py-4 border-t border-gray-200">
-        <div class="font-bold">输出参数</div>
-        <div class="mt-2">返回处理后的whois字符串</div>
+        <div class="font-bold">{{ t('api.output') }}</div>
+        <div class="mt-2">{{ t('api.whois') }}</div>
       </div>
     </div>
   </div>

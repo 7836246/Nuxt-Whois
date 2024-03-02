@@ -24,16 +24,20 @@ const showRawData = ref(false);
 const timeStore = useTimeStore()
 const styleStore = useStyleStore()
 styleStore.setIsPage(true)
+
 useHead({
-  title: `${domainData} - ${t('result.title')}`,
+  title: `${domainData} - ${t('whois.title')}`,
   meta: [
     {
-      hid: 'description',
       name: 'description',
-      content: t('result.description', {domain: domainData})
+      content: t('whois.description', { domain: domainData })
+    },{
+      name: 'keywords',
+      content: t('whois.keywords', { domain: domainData })
     }
   ]
 })
+
 </script>
 
 <template>

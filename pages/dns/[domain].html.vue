@@ -19,12 +19,14 @@ const styleStore = useStyleStore()
 styleStore.setIsPage(true)
 
 useHead({
-  title: `${domainData} - ${t('result.title')}`,
+  title: `${domainData} - ${t('dns.title')}`,
   meta: [
     {
-      hid: 'description',
       name: 'description',
-      content: t('result.description', {domain: domainData})
+      content: t('dns.description', { domain: domainData })
+    },{
+      name: 'keywords',
+      content: t('dns.keywords', { domain: domainData })
     }
   ]
 })
