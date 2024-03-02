@@ -56,7 +56,7 @@ const timeStore = useTimeStore()
 </script>
 
 <template>
-  <div class="w-full  min-h-screen text-xs bg-[#F1F3F4] dark:bg-transparent">
+  <div class="w-full h-[90vh] text-xs bg-[#F1F3F4] dark:bg-transparent">
     <div class=" max-w-screen-lg mx-auto pt-[25vh] px-[1em] pb-[10vh] ">
       <nav class=" w-full text-[#464747] h-5 dark:bg-gray-700">
         <NuxtLink class="mb-3 font-bold text-2xl inline-block text-current no-underline dark:text-white"
@@ -121,6 +121,7 @@ const timeStore = useTimeStore()
       <slot />
     </div>
   </div>
+  <CommonFooter />
 </template>
 
 <style scoped>
