@@ -23,7 +23,7 @@ Nuxt-Whois 是一个基于 Nuxt3、Tailwind CSS 和 Xep-Whois 构建的Whois查�
 克隆项目到本地：
 
 ```bash
-git clone https://github.com/your-repository/Nuxt-Whois.git
+git clone https://github.com/7836246/Nuxt-Whois.git
 cd Nuxt-Whois
 
 # 使用 PNPM
