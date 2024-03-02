@@ -105,17 +105,12 @@ useHead({
   </table>
 
   <!-- 公告部分 -->
-  <div v-else class="mt-5 bg-gray-200 p-3 rounded-md mb-5 dark:bg-[#5b77af]">
-    <div class="flex items-center">
-      <i aria-hidden="true" class="icon fas fa-bullhorn mr-3"></i>
-    </div>
-    <div class="flex-grow">
-      <div class="text-sm text-gray-800 dark:text-white">
-        <Icon name="bx:error" size="16px" color="red" />
-        {{ t('error.notFound') }}
-      </div>
-    </div>
-  </div>
+  <CommonBulletin v-else class="mt-5"  >
+    <template #text>
+      <Icon name="bx:error" size="16px" color="red" />
+      {{ t('error.notFound') }}
+    </template>
+  </CommonBulletin>
 
   <div
       class="w-full  bg-[#fffffe] mt-5 p-4 shadow-lg rounded-lg whitespace-pre-wrap dark:text-gray-200 dark:bg-gray-800"
