@@ -14,7 +14,7 @@ const domainData = domain.replace(/_/g, '.')
 const timeStore = useTimeStore()
 const styleStore = useStyleStore()
 const localePath = useLocalePath()
-
+const settingsStore = useSettingsStore()
 styleStore.setIsPage(true)
 
 const {data, pending, error, refresh} = await useAsyncData(
@@ -28,7 +28,7 @@ const {data, pending, error, refresh} = await useAsyncData(
     })
 )
 
-if (!error.value) {
+if (!error.value && settingsStore.getHistory) {
   styleStore.addOrUpdateHistory(
       {
         id: domainData,

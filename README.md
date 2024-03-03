@@ -48,6 +48,8 @@ yarn
 
 pnpm dev
 
-# Nuxt-Whois
-# Nuxt-Whois
-# Nuxt-Whois
+    
+```
+
+# 免责声明
+  本项目开源仅供学习使用，不得用于任何违法用途，否则后果自负，与本人无关。使用请保留项目地址谢谢。

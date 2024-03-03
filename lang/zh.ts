@@ -7,6 +7,10 @@ export default defineI18nLocale(async locale => {
           actions: {
               //删除
                 delete: '删除',
+              //重置
+                reset: '重置',
+              //确定
+                confirm: '确定',
           }
         },
         whois:{
@@ -133,6 +137,28 @@ export default defineI18nLocale(async locale => {
             language: '切换语言',
             //dnsChange
             dnsChange: '切换DNS服务器',
+        },
+        settings: {
+            //全局设置
+            title: '全局设置',
+            //历史记录保留
+            history: '历史记录保留',
+            //链接跳转方式
+            linkOpenType: '链接跳转方式',
+            //选择榜单列表内容的跳转方式
+            linkOpenTypeDesc: '选择榜单列表内容的跳转方式',
+            //杂项设置
+            miscellaneous: '杂项设置',
+            //重置所有数据
+            reset: '重置所有数据',
+            //重置所有数据，你的自定义设置都将会丢失
+            resetDesc: '重置所有数据，你的自定义设置都将会丢失',
+            //确认重置所有数据？你的自定义设置都将会丢失！
+            resetConfirm: '确认重置所有数据？你的自定义设置都将会丢失！',
+            // 当前窗口
+            currentWindow: '当前窗口',
+            // 新窗口
+            newWindow: '新窗口',
         }
     }
 })

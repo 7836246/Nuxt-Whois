@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const timeStore = useTimeStore()
+const settingsStore = useSettingsStore()
 const emit = defineEmits(['action'])
 
 const handleActionFromDnsList = (urlParam:string) => {
@@ -17,7 +18,9 @@ const {t} = useI18n()
           <CommonDomainList  />
         </UTooltip>
 
-        <UTooltip :text="t('popper.history')" :popper="{ placement: 'top' }">
+        <UTooltip
+            v-if="settingsStore.getHistory"
+            :text="t('popper.history')" :popper="{ placement: 'top' }">
           <CommonHistory  />
         </UTooltip>
 
