@@ -18,7 +18,7 @@ const styleStore = useStyleStore()
 const localePath = useLocalePath()
 
 const {data, pending, error, refresh} = await useAsyncData(
-    'mountains',
+    'whois',
     () => $fetch('/api/whois', {
       method: 'POST',
       body: JSON.stringify({domain: domainData})

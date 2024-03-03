@@ -17,9 +17,6 @@ dependencies:
   nuxt:
     specifier: ^3.10.3
     version: 3.10.3(rollup@4.12.0)(typescript@5.3.3)(vite@5.1.4)
-  socks:
-    specifier: ^2.8.1
-    version: 2.8.1
   vue:
     specifier: ^3.4.21
     version: 3.4.21(typescript@5.3.3)

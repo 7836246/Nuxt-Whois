@@ -1,31 +1,79 @@
 import dns from 'node:dns/promises';
+
+// 定义 DNS 服务器配置
+const dnsServers:any = {
+    google: 'https://dns.google/resolve',
+    cloudflare: 'http://cloudflare-dns.com/dns-query',
+    aliyun: 'https://223.5.5.5/resolve',
+    tencent: 'https://doh.pub/dns-query',
+};
+
+interface Resp {
+    aRecords: string[];
+    nsRecords: string[];
+    soaRecord: soaRecord;
+}
+
+interface soaRecord {
+    nsname: string;
+    hostmaster: string;
+    serial: number;
+    refresh: number;
+    retry: number;
+    expire: number;
+    minttl: number;
+}
 export default defineEventHandler(async (event) => {
-    const body = await readBody(event)
-
+    const body = await readBody(event);
     const domain = body.domain;
-    if (!domain) {
-        return { error: 'Missing domain' };
-    }
-    try {
-        const aRecords = await dns.resolve(domain, 'A');
-        const nsRecords = await dns.resolve(domain, 'NS');
-        const soaRecord = await dns.resolveSoa(domain);
 
-        return {
-            A: aRecords.map(ip => ({ TTL: '600', Record: ip })), // 示例中的TTL是假设的
-            NS: nsRecords.map(ns => ({ TTL: '21600', Record: ns })), // 示例中的TTL是假设的
-            SOA: {
-                MName: soaRecord.nsname,
-                Email: soaRecord.hostmaster,
-                Serial: soaRecord.serial,
-                Refresh: soaRecord.refresh,
-                Retry: soaRecord.retry,
-                Expire: soaRecord.expire,
-                MinimumTTL: soaRecord.minttl,
-            }
-        };
-    } catch (error) {
-        console.error(`Error fetching DNS records for ${domain}:`, error);
-        return { error: 'Failed to fetch DNS records' };
+    const dnsServerKey = body.dnsServer;
+
+    switch (dnsServerKey) {
+        case 'google':
+            return  await $fetch(dnsServers.google, {
+                params: {
+                    name: domain,
+                    type: 'A',
+                }
+            });
+        case 'tencent':
+            return  await $fetch(dnsServers.tencent, {
+                params: {
+                    name: domain,
+                    type: 'A',
+                }
+            });
+        case 'cloudflare':
+           const resp =  await $fetch('http://1.1.1.1/dns-query', {
+                method: 'GET',
+                params: {
+                    name: domain,
+               },
+                headers: {
+                    "Accept": "application/dns-json", // 设置期望的响应数据类型
+                }
+            }).then((resp:any) => {
+                return resp.text()
+           })
+            return JSON.parse(resp);
+        case 'aliyun':
+            return  await $fetch(dnsServers.aliyun, {
+                params: {
+                    name: domain,
+                    type: '1',
+                }
+            });
+        default:
+            const resolver = new dns.Resolver();
+
+            const aRecords = await resolver.resolve(domain, 'A');
+            const nsRecords = await resolver.resolve(domain, 'NS');
+            const soaRecord = await resolver.resolveSoa(domain);
+            return {
+                aRecords: aRecords,
+                nsRecords: nsRecords,
+                soaRecord: soaRecord,
+            } as Resp;
     }
-})
+});
