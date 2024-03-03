@@ -131,6 +131,8 @@ export default defineI18nLocale(async locale => {
             theme: '主题模式',
             //语言设置
             language: '切换语言',
+            //dnsChange
+            dnsChange: '切换DNS服务器',
         }
     }
 })

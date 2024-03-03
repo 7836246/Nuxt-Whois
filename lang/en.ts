@@ -122,6 +122,7 @@ export default defineI18nLocale(async locale => {
             setting: 'Website Settings',
             theme: 'Theme',
             language: 'Language',
+            dnsChange: 'DNS Change',
         }
     }
 })

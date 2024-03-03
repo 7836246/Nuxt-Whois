@@ -63,7 +63,9 @@ useHead({
             <span class="text-gray-300 text-sm font-normal ml-2">{{ timeStore.getDnsServer }}</span>
           </h2>
           <ClientOnly>
-          <DnsApiChanges />
+            <UTooltip :text="t('popper.dnsChange')" :popper="{ placement: 'top' }">
+              <DnsApiChanges />
+            </UTooltip>
           </ClientOnly>
         </div>
 

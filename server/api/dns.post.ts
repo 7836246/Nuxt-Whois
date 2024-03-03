@@ -3,7 +3,7 @@ import dns from 'node:dns/promises';
 // 定义 DNS 服务器配置
 const dnsServers:any = {
     google: 'https://dns.google/resolve',
-    cloudflare: 'http://cloudflare-dns.com/dns-query',
+    cloudflare: 'http://1.1.1.1/dns-query',
     aliyun: 'https://223.5.5.5/resolve',
     tencent: 'https://doh.pub/dns-query',
 };
@@ -45,7 +45,7 @@ export default defineEventHandler(async (event) => {
                 }
             });
         case 'cloudflare':
-           const resp =  await $fetch('http://1.1.1.1/dns-query', {
+           const resp =  await $fetch(dnsServers.cloudflare, {
                 method: 'GET',
                 params: {
                     name: domain,
