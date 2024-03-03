@@ -1,4 +1,4 @@
-import {whois, WhoIsOptions} from 'xep-whois';
+import {whois} from "~/server/whois/whois";
 
 export default defineEventHandler(async (event) => {
     const body = await readBody(event)
