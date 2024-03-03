@@ -3,6 +3,11 @@ export default defineI18nLocale(async locale => {
         app: {
             title: 'Nuxt Whois',
         },
+        common: {
+            actions: {
+                delete: 'Delete',
+            }
+        },
         whois:{
             title: 'Whois Query',
             description: 'Query the Whois information of {domain}, including registrant contact information, domain status, DNS records and other detailed information. Quickly and accurately obtain domain ownership and registration information.',
@@ -21,6 +26,22 @@ export default defineI18nLocale(async locale => {
             //SOA record
             soaRecord: 'SOA record',
         },
+        history:{
+            //Query history
+            title: 'Query History',
+            //Only keep the last 30/{{ styleStore.getHistory.length }} records
+            tips: 'Only keep the last 30/{length} records',
+            //Domain
+            domain: 'Domain',
+            //Query type
+            type: 'Query Type',
+            //Query time
+            time: 'Query Time',
+            //Operation
+            actions: 'Actions',
+            //There is currently no query history.
+            empty: 'There is currently no query history.',
+        },
         index: {
             tips: 'The information you submit for your query will not be recorded!',
             placeholder: 'Please enter a domain name',
@@ -28,6 +49,7 @@ export default defineI18nLocale(async locale => {
             title: 'WHOIS and Dns Query Tool Website',
             description: 'Provide domain WHOIS query, domain DNS query, domain registrar query, domain registration information query and other services',
             keywords: 'Domain whois query, whois query, whois information query, whois query tool, whois query website, whois query api, whois query interface',
+            support: 'Currently only the following suffixes are supported',
         },
         error:{
             formatDomain: 'Error formatting domain name',

@@ -3,6 +3,12 @@ export default defineI18nLocale(async locale => {
         app: {
             title: 'Nuxt Whois',
         },
+        common: {
+          actions: {
+              //删除
+                delete: '删除',
+          }
+        },
         whois:{
             title: "Whois查询",
             description: "查询{domain}的Whois信息，包括注册者联系方式、域名状态、DNS记录等详细信息。快速、准确地获取域名所有权和注册信息。",
@@ -21,6 +27,22 @@ export default defineI18nLocale(async locale => {
             //SOA记录
             soaRecord: 'SOA记录',
         },
+        history:{
+            //查询历史
+            title: '查询历史',
+            //只保留最近 30/{{ styleStore.getHistory.length }} 条记录
+            tips: '只保留最近 30/{length} 条记录',
+            //域名
+            domain: '域名',
+            //查询类型
+            type: '查询类型',
+            //查询时间
+            time: '查询时间',
+            //操作
+            actions: '操作',
+            //当前没有查询历史记录。
+            empty: '当前没有查询历史记录。',
+        },
         index: {
             tips: '您提交的查询信息不会被记录！',
             placeholder: '请输入域名',
@@ -28,6 +50,8 @@ export default defineI18nLocale(async locale => {
             title: 'Whois与Dns查询工具网站',
             description: '提供域名WHOIS查询、域名DNS查询、域名注册商查询、域名注册信息查询等服务',
             keywords: '域名whois查询,whois查询,whois信息查询,whois查询工具,whois查询网站,whois查询api,whois查询接口',
+            //目前仅支持以下后缀
+            support: '目前仅支持以下后缀',
         },
         error:{
             formatDomain: '域名格式错误',

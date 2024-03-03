@@ -59,7 +59,9 @@ useHead({
           <div>
             <h3 class="font-semibold text-lg text-blue-600 mb-2">{{ t('dns.aRecord') }}</h3>
             <div class="border rounded-lg p-4 bg-blue-50">
-              <ul class="list-none space-y-2">
+              <ul
+                  v-if="data.A.length > 0"
+                  class="list-none space-y-2">
                 <li v-for="(record, index) in data.A" :key="'a-record-' + index" class="flex justify-between items-center">
                   <span class="font-medium text-gray-700">IP:</span>
                   <span class="font-normal text-gray-600">{{ record.Record }}</span>
@@ -71,7 +73,9 @@ useHead({
           <div>
             <h3 class="font-semibold text-lg text-green-600 mb-2">{{ t('dns.nsRecord') }}</h3>
             <div class="border rounded-lg p-4 bg-green-50">
-              <ul class="list-none space-y-2">
+              <ul
+                  v-if="data.NS.length > 0"
+                  class="list-none space-y-2">
                 <li v-for="(record, index) in data.NS" :key="'ns-record-' + index" class="flex justify-between items-center">
                   <span class="font-normal text-gray-600">{{ record.Record }}</span>
                   <span class="text-sm text-gray-500">TTL: {{ record.TTL }}</span>

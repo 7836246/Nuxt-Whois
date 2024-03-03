@@ -2,7 +2,7 @@
 import {SupportedTLDs} from "~/utils/domain";
 
 const isOpen = ref(false)
-
+const {t} = useI18n()
 </script>
 
 <template>
@@ -23,7 +23,7 @@ const isOpen = ref(false)
       <Icon name="lets-icons:close-ring-light" class="absolute top-2 right-2 text-gray-500 cursor-pointer" @click="isOpen = false" />
       </button>
         <div class="p-4 flex-1">
-        <div>目前仅支持以下后缀：</div>
+        <div>{{t('index.support')}}：</div>
         <div class="flex flex-wrap mt-2 p-5 overflow-y-auto max-h-[95vh]">
       <span
           v-for="item in SupportedTLDs"

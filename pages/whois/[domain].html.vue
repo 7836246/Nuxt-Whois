@@ -57,7 +57,8 @@ useHead({
   <table
       class="w-full bg-[#fffffe] p-4 shadow-lg rounded-lg mt-5 dark:bg-gray-800 dark:text-gray-200 text-white hover:bg-none">
     <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-    <tr class="hover:bg-gray-100 text-gray-900 dark:hover:bg-gray-700 text-gray-200">
+    <tr v-if="parsedInfo.domainName"
+        class="hover:bg-gray-100 text-gray-900 dark:hover:bg-gray-700 text-gray-200">
       <th class="p-4 text-left font-semibold text-gray-900 dark:text-gray-200">
         {{ t('result.domain') }}
       </th>
@@ -70,47 +71,65 @@ useHead({
         </p>
       </td>
     </tr>
-    <tr class="hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-200">
+    <tr
+        v-if="parsedInfo.registrar"
+        class="hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-200">
       <th class="p-4 text-left font-semibold text-gray-900 dark:text-gray-200">{{ t('result.registrar') }}</th>
       <td class="p-4 text-gray-900 dark:text-gray-200">{{ parsedInfo.registrar }}</td>
     </tr>
-    <tr class="hover:bg-gray-100 text-gray-900 dark:hover:bg-gray-700 text-gray-200">
+    <tr
+        v-if="parsedInfo.updatedDate"
+        class="hover:bg-gray-100 text-gray-900 dark:hover:bg-gray-700 text-gray-200">
       <th class="p-4 text-left font-semibold text-gray-900 dark:text-gray-200">{{ t('result.updateDate') }}</th>
       <td class="p-4 text-gray-900 dark:text-gray-200">
         {{ AdjustTimeToUTCOffset(parsedInfo.updatedDate, timeStore.timeZones) }}
       </td>
     </tr>
-    <tr class="hover:bg-gray-100 text-gray-900 dark:hover:bg-gray-700 text-gray-200">
+    <tr
+        v-if="parsedInfo.creationDate"
+        class="hover:bg-gray-100 text-gray-900 dark:hover:bg-gray-700 text-gray-200">
       <th class="p-4 text-left font-semibold text-gray-900 dark:text-gray-200">{{ t('result.createDate') }}</th>
       <td class="p-4 text-gray-900 dark:text-gray-200">
         {{ AdjustTimeToUTCOffset(parsedInfo.creationDate, timeStore.timeZones) }}
       </td>
     </tr>
-    <tr class="hover:bg-gray-100 text-gray-900 dark:hover:bg-gray-700 text-gray-200">
+    <tr
+        v-if="parsedInfo.registryExpiryDate"
+        class="hover:bg-gray-100 text-gray-900 dark:hover:bg-gray-700 text-gray-200">
       <th class="p-4 text-left font-semibold text-gray-900 dark:text-gray-200">{{ t('result.expirationDate') }}</th>
       <td class="p-4 text-gray-900 dark:text-gray-200">
         {{ AdjustTimeToUTCOffset(parsedInfo.registryExpiryDate, timeStore.timeZones) }}
       </td>
     </tr>
-    <tr class="hover:bg-gray-100 text-gray-900 dark:hover:bg-gray-700 text-gray-200">
+    <tr
+        v-if="parsedInfo.registrarIANAID"
+        class="hover:bg-gray-100 text-gray-900 dark:hover:bg-gray-700 text-gray-200">
       <th class="p-4 text-left font-semibold text-gray-900 dark:text-gray-200">{{ t('result.ianaId') }}</th>
       <td class="p-4 text-gray-900 dark:text-gray-200">{{ parsedInfo.registrarIANAID }}</td>
     </tr>
-    <tr class="hover:bg-gray-100 text-gray-900 dark:hover:bg-gray-700 text-gray-200">
+    <tr
+        v-if="parsedInfo.domainStatus"
+        class="hover:bg-gray-100 text-gray-900 dark:hover:bg-gray-700 text-gray-200">
       <th class="p-4 text-left font-semibold text-gray-900 dark:text-gray-200">{{ t('result.status') }}</th>
       <td class="p-4 text-gray-900 dark:text-gray-200">{{ parsedInfo.domainStatus?.join(', ') }}</td>
     </tr>
-    <tr class="hover:bg-gray-100 text-gray-900 dark:hover:bg-gray-700 text-gray-200">
+    <tr
+        v-if="parsedInfo.nameServers"
+        class="hover:bg-gray-100 text-gray-900 dark:hover:bg-gray-700 text-gray-200">
       <th class="p-4 text-left font-semibold text-gray-900 dark:text-gray-200">{{ t('result.dns') }}</th>
       <td class="p-4 text-gray-900 dark:text-gray-200">
         <p v-for="item in parsedInfo.nameServers">{{ item }}</p>
       </td>
     </tr>
-    <tr class="hover:bg-gray-100 text-gray-900 dark:hover:bg-gray-700 text-gray-200">
+    <tr
+        v-if="parsedInfo.dnssec"
+        class="hover:bg-gray-100 text-gray-900 dark:hover:bg-gray-700 text-gray-200">
       <th class="p-4 text-left font-semibold text-gray-900 dark:text-gray-200">{{ t('result.dnssec') }}</th>
       <td class="p-4 text-gray-900 dark:text-gray-200">{{ parsedInfo.dnssec }}</td>
     </tr>
-    <tr class="hover:bg-gray-100 text-gray-900 dark:hover:bg-gray-700 text-gray-200">
+    <tr
+        v-if="data"
+        class="hover:bg-gray-100 text-gray-900 dark:hover:bg-gray-700 text-gray-200">
       <th class="p-4 text-left font-semibold text-gray-900 dark:text-gray-200">{{ t('result.rawData') }}</th>
       <td class="p-4 text-gray-900 dark:text-gray-200">
         <UToggle color="sky" v-model="showRawData"/>

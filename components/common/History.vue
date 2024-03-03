@@ -1,17 +1,17 @@
 <script setup lang="ts">
-
 import {useStyleStore} from "~/stores/style";
-import {formatTimeAgo} from "~/composables/useFormatTime";
 
 const isOpen = ref(false)
 
 const styleStore = useStyleStore()
 
+const {t} = useI18n()
 const slideoverConfig = {
   // 其他配置保持不变
   width: 'w-screen max-w-2xl', // 更新这里的值
   // 其余的配置...
 };
+
 </script>
 
 <template>
@@ -36,9 +36,9 @@ const slideoverConfig = {
       <div class="w-full min-h-screen bg-gray-100 p-5 overflow-y-auto max-h-[95vh]">
         <div class="max-w-6xl mx-auto">
           <h1 class="text-2xl font-bold text-gray-800 mb-5 flex items-center justify-between">
-            查询历史
+            {{ t('history.title') }}
             <span class="text-sm text-gray-500 bg-gray-100 py-1 px-3 rounded-full">
-              只保留最近 30/{{ styleStore.getHistory.length }} 条记录
+             {{ t('history.tips', { length: styleStore.getHistory.length }) }}
             </span>
           </h1>
           <div class="bg-white shadow-md rounded-lg">
@@ -50,16 +50,16 @@ const slideoverConfig = {
                   <thead>
                   <tr>
                     <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                      域名
+                      {{ t('history.domain') }}
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                      查询类型
+                      {{ t('history.type') }}
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                      查询时间
+                      {{ t('history.time') }}
                     </th>
                     <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                      动作
+                      {{ t('history.actions') }}
                     </th>
                   </tr>
                   </thead>
@@ -79,7 +79,7 @@ const slideoverConfig = {
                       <UButton
                           @click="styleStore.deleteHistory(item.id)"
                           color="sky"
-                      >删除</UButton>
+                      >{{t('common.actions.delete')}}</UButton>
                     </td>
                   </tr>
                   </tbody>
@@ -87,7 +87,7 @@ const slideoverConfig = {
               </table>
             </div>
             <div v-else class="text-center py-5">
-              <p class="text-gray-500">当前没有查询历史记录。</p>
+              <p class="text-gray-500">{{ t('history.empty') }}</p>
             </div>
           </div>
         </div>
