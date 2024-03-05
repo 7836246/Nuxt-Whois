@@ -146,7 +146,7 @@ export default defineI18nLocale(async locale => {
             //链接跳转方式
             linkOpenType: '链接跳转方式',
             //选择榜单列表内容的跳转方式
-            linkOpenTypeDesc: '选择榜单列表内容的跳转方式',
+            linkOpenTypeDesc: '选择网页的跳转方式',
             //杂项设置
             miscellaneous: '杂项设置',
             //重置所有数据
