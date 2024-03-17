@@ -6,7 +6,6 @@ import parametersData from '~/server/whois/json/parameters.json';
 
 const IANA_CHK_URL = 'https://www.iana.org/whois?q=';
 
-
 interface IServers {
     [key: string]: string;
 }

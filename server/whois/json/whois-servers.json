@@ -1533,7 +1533,6 @@
   "net.cn": "whois.cnnic.net.cn",
   "org.cn": "whois.cnnic.net.cn",
   "gov.cn": "whois.cnnic.net.cn",
-  "net.cn": "whois.cnnic.net.cn",
   "ac.cn": "whois.cnnic.net.cn",
   "bj.cn": "whois.cnnic.net.cn",
   "sh.cn": "whois.cnnic.net.cn",
@@ -1570,4 +1569,3 @@
   "sn.cn": "whois.cnnic.net.cn",
   "xj.cn": "whois.cnnic.net.cn"
 }
-

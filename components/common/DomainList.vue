@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import {SupportedTLDs} from "~/utils/domain";
-
+const domainStore = useDomainStore();
+const SupportedTLDs = new Set(Object.keys(domainStore.SupportedTLDs));
 const isOpen = ref(false)
 const {t} = useI18n()
 </script>

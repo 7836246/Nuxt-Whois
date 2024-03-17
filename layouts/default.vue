@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import {SupportedTLDs} from "~/utils/domain";
 import {useStyleStore} from "~/stores/style";
 
 const { t } = useI18n()
@@ -14,7 +13,9 @@ const router = useRouter();
 const runtimeConfig = useRuntimeConfig()
 const localePath = useLocalePath()
 const settingsStore = useSettingsStore()
+const domainStore = useDomainStore()
 
+const SupportedTLDs = new Set(Object.keys(domainStore.SupportedTLDs));
 const handleAction = async (url: any) => {
   if (!state.domain) return toast.add({ title: '请输入域名' })
   let domain = trimDomain(state.domain);
