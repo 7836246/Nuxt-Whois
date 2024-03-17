@@ -15,13 +15,13 @@ export default defineNuxtConfig({
   } ,
   runtimeConfig: {
       public: {
-          Domain: process.env.WebSiteDomain,
-          DomainSuffix: process.env.WebSiteDomainSuffix,
+          Domain: process.env.WebSiteDomain || 'Nuxt Whois',
+          DomainSuffix: process.env.WebSiteDomainSuffix || 'Dns',
       }
   },
   app:{
     head: {
-        title: process.env.WebSiteTitle,
+        title: process.env.WebSiteTitle || 'Nuxt Whois',
         meta: [
             { charset: 'utf-8' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1' },
