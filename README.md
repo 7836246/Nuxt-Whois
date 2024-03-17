@@ -18,6 +18,10 @@ Nuxt-Whois 是一个基于 Nuxt3、Tailwind CSS 和 Xep-Whois 构建的Whois查�
 - Node.js 18.x 或更高版本
 - NPM 或 Yarn
 
+### 交流群组
+
+![QQ群图片](./img/qrcode.jpg)
+
 ## 图片预览
 
 ![首页图片](./img/home.png)
