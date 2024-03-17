@@ -345,8 +345,8 @@ export async function tcpWhois(domain: string, queryOptions: string, server: str
             options.proxy.password = proxy.password;
         }
 
-        return new Promise((resolve, reject) => {
-            SocksClient.createConnection(options, function(err, info) {
+        return new Promise((resolve:any, reject:any) => {
+            SocksClient.createConnection(options, function(err:any, info:any) {
                 if (err) {
                     reject(err);
                 } else {
@@ -364,7 +364,7 @@ export async function tcpWhois(domain: string, queryOptions: string, server: str
                         );
                     }
 
-                    info?.socket.on('data', (data) => {
+                    info?.socket.on('data', (data:any) => {
                         resolve(decoder.decode(data));
                     });
 

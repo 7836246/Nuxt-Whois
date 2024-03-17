@@ -13,7 +13,7 @@ const router = useRouter();
 
 const runtimeConfig = useRuntimeConfig()
 const localePath = useLocalePath()
-
+const settingsStore = useSettingsStore()
 
 const handleAction = async (url: any) => {
   if (!state.domain) return toast.add({ title: '请输入域名' })
@@ -25,7 +25,9 @@ const handleAction = async (url: any) => {
   domain = updateDomainForTLD(parts);
   state.domain = domain;
 
-  await router.push(localePath(`/${url}/${state.domain.replace(/\./g, '_')}.html`));
+  const isLink = ref({})
+  isLink.value = settingsStore.linkOpenType != 'currentWindow'
+  await router.push(localePath(`/${url}/${state.domain.replace(/\./g, '_')}.html`))
 }
 
 
