@@ -40,17 +40,17 @@ const handleReset = async () => {
   </div>
 
   <div class="setting">
-    <div class="text-2xl font-bold mt-[30px] mb-[20px]"> 后缀设置 </div>
+    <div class="text-2xl font-bold mt-[30px] mb-[20px]"> {{ t('settings.suffixSetting') }} </div>
     <u-card class="set-item">
       <div class="flex justify-between items-center">
-        <div class="text-base"> 自定义后缀 </div>
+        <div class="text-base"> {{ t('settings.customSuffix') }} </div>
         <div class="text-sm			" >
-          自定义编辑管理添加后缀
+          {{ t('settings.suffixDesc') }}
         </div>
         <div>
           <u-button type="warning"
                     @click="isEditDomainOpen = true"
-          > 管理 </u-button>
+          > {{ t('settings.manage') }} </u-button>
         </div>
       </div>
 
@@ -70,7 +70,7 @@ const handleReset = async () => {
           <template #header>
             <div class="flex items-center justify-between">
               <h3 class="text-base font-semibold leading-6 text-gray-900 dark:text-white">
-                后缀管理
+                {{ t('settings.suffixManage') }}
               </h3>
               <UButton
                   color="gray"

@@ -11,6 +11,8 @@ export default defineI18nLocale(async locale => {
                 reset: '重置',
               //确定
                 confirm: '确定',
+              //添加
+              add: '添加',
           }
         },
         whois:{
@@ -159,6 +161,20 @@ export default defineI18nLocale(async locale => {
             currentWindow: '当前窗口',
             // 新窗口
             newWindow: '新窗口',
+        //     后缀设置
+            suffixSetting: '后缀设置',
+        //     后缀管理
+            suffixManage: '后缀管理',
+            // 自定义后缀
+            customSuffix: '自定义后缀',
+        //     自定义编辑管理添加后缀
+            suffixDesc: '自定义编辑管理添加后缀',
+        //     管理
+            manage: '管理',
+            suffixPlaceholder: '域名后缀，如 .cn',
+            whoisPlaceholder: 'Whois服务器，如 whois.cnnic.net.cn',
+        //     后缀已存在
+            suffixExist: '后缀已存在',
         }
     }
 })

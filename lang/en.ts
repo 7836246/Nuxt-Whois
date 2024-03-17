@@ -8,6 +8,7 @@ export default defineI18nLocale(async locale => {
                 delete: 'Delete',
                 reset: 'Reset',
                 confirm: 'Confirm',
+                add: 'Add',
             }
         },
         whois:{
@@ -147,6 +148,19 @@ export default defineI18nLocale(async locale => {
             currentWindow: 'Current Window',
             //新窗口
             newWindow: 'New Window',
+            //     后缀设置
+            suffixSetting: 'Suffix Settings',
+            //     后缀管理
+            suffixManage: 'Suffix Management',
+            // 自定义后缀
+            customSuffix: 'Custom Suffix',
+            //     自定义编辑管理添加后缀
+            suffixDesc: 'Customize the suffix to be added',
+            //     管理
+            manage: 'Manage',
+            suffixPlaceholder: 'Please enter the suffix',
+            whoisPlaceholder: 'Please enter the whois server',
+            suffixExist: 'The suffix already exists',
         },
     }
 })

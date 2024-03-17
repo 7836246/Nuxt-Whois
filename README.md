@@ -10,6 +10,9 @@ Nuxt-Whois 是一个基于 Nuxt3、Tailwind CSS 和 Xep-Whois 构建的Whois查�
 - **Dns查询**：支持Dns查询，方便用户查看域名的Dns信息。
 - **自定义后缀**：支持自定义Whois服务器后缀，方便用户查询不同后缀的域名。
 
+### 内容修改
+    大部分多语言文字都在lang文件夹下或者.env文件，可以自行修改。
+
 ### 环境要求
 
 - Node.js 18.x 或更高版本
