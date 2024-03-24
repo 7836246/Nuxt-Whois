@@ -62,8 +62,8 @@ const handleReset = async () => {
         </div>
         <n-popconfirm
             @positive-click="handleReset"
-            :negative-text="t('settings.cancel')"
-            :positive-text="t('settings.confirm')"
+            :negative-text="t('common.actions.cancel')"
+            :positive-text="t('common.actions.confirm')"
         >
           <template #trigger>
             <n-button type="warning"> {{ t('common.actions.reset') }}</n-button>

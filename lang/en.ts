@@ -9,14 +9,15 @@ export default defineI18nLocale(async locale => {
                 reset: 'Reset',
                 confirm: 'Confirm',
                 add: 'Add',
+                cancel: 'Cancel',
             }
         },
-        whois:{
+        whois: {
             title: 'Whois Query',
             description: 'Query the Whois information of {domain}, including registrant contact information, domain status, DNS records and other detailed information. Quickly and accurately obtain domain ownership and registration information.',
             keywords: 'Whois query, {domain}, domain information, domain owner, domain registration information'
         },
-        dns:{
+        dns: {
             title: 'DNS Query',
             description: 'Query the DNS records of {domain}, including A records, AAAA records, CNAME records, MX records, NS records, TXT records, etc.',
             keywords: 'DNS query, {domain}, domain resolution, domain resolution record',
@@ -29,7 +30,7 @@ export default defineI18nLocale(async locale => {
             //SOA record
             soaRecord: 'SOA record',
         },
-        history:{
+        history: {
             //Query history
             title: 'Query History',
             //Only keep the last 30/{{ styleStore.getHistory.length }} records
@@ -54,7 +55,7 @@ export default defineI18nLocale(async locale => {
             keywords: 'Domain whois query, whois query, whois information query, whois query tool, whois query website, whois query api, whois query interface',
             support: 'Currently only the following suffixes are supported',
         },
-        error:{
+        error: {
             formatDomain: 'Error formatting domain name',
             validDomain: 'Domain must contain a valid top-level domain',
             notFound: 'Domain not found',

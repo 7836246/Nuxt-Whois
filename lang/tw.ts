@@ -12,6 +12,7 @@ export default defineI18nLocale(async locale => {
                 confirm: '確定',
                 //新增
                 add: '新增',
+                cancel: '取消',
             }
         },
         whois: {
@@ -32,7 +33,7 @@ export default defineI18nLocale(async locale => {
             //SOA記錄
             soaRecord: 'SOA記錄',
         },
-        history:{
+        history: {
             //查詢歷史
             title: '查詢歷史',
             //只保留最近 30/{{ styleStore.getHistory.length }} 條記錄

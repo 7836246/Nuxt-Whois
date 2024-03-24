@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia';
+import {defineStore} from 'pinia';
 import serversData from '~/server/whois/json/whois-servers.json';
 
 // 定义接口来描述state的结构
@@ -6,10 +6,10 @@ interface DomainState {
     SupportedTLDs: Record<string, string>;
 }
 
-export const useDomainStore = defineStore('domain', {
+export const useDomainListStore = defineStore('useDomainListStore', {
     // 使用箭头函数和类型注解定义state
     state: (): DomainState => ({
-        SupportedTLDs: { ...serversData },
+        SupportedTLDs: {...serversData},
     }),
     actions: {
         async addSuffix(suffix: string, server: string) {
@@ -43,7 +43,7 @@ export const useDomainStore = defineStore('domain', {
             }
         }
     },
-    persist:{
+    persist: {
         storage: persistedState.localStorage,
     }
 });

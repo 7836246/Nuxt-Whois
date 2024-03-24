@@ -4,23 +4,25 @@ export default defineI18nLocale(async locale => {
             title: 'Nuxt Whois',
         },
         common: {
-          actions: {
-              //删除
+            actions: {
+                //删除
                 delete: '删除',
-              //重置
+                //重置
                 reset: '重置',
-              //确定
+                //确定
                 confirm: '确定',
-              //添加
-              add: '添加',
-          }
+                //添加
+                add: '添加',
+                cancel: '取消',
+
+            }
         },
-        whois:{
+        whois: {
             title: "Whois查询",
             description: "查询{domain}的Whois信息，包括注册者联系方式、域名状态、DNS记录等详细信息。快速、准确地获取域名所有权和注册信息。",
             keywords: "Whois查询, {domain}, 域名信息, 域名所有者, 域名注册信息"
         },
-        dns:{
+        dns: {
             title: 'DNS查询',
             description: '查询{domain}的DNS记录，包括A记录、AAAA记录、CNAME记录、MX记录、NS记录、TXT记录等。',
             keywords: 'DNS查询, {domain}, 域名解析, 域名解析记录',
@@ -33,7 +35,7 @@ export default defineI18nLocale(async locale => {
             //SOA记录
             soaRecord: 'SOA记录',
         },
-        history:{
+        history: {
             //查询历史
             title: '查询历史',
             //只保留最近 30/{{ styleStore.getHistory.length }} 条记录
@@ -59,7 +61,7 @@ export default defineI18nLocale(async locale => {
             //目前仅支持以下后缀
             support: '目前仅支持以下后缀',
         },
-        error:{
+        error: {
             formatDomain: '域名格式错误',
             //域名必须包含有效的顶级域
             validDomain: '域名必须包含有效的顶级域',
@@ -161,19 +163,19 @@ export default defineI18nLocale(async locale => {
             currentWindow: '当前窗口',
             // 新窗口
             newWindow: '新窗口',
-        //     后缀设置
+            //     后缀设置
             suffixSetting: '后缀设置',
-        //     后缀管理
+            //     后缀管理
             suffixManage: '后缀管理',
             // 自定义后缀
             customSuffix: '自定义后缀',
-        //     自定义编辑管理添加后缀
+            //     自定义编辑管理添加后缀
             suffixDesc: '自定义编辑管理添加后缀',
-        //     管理
+            //     管理
             manage: '管理',
             suffixPlaceholder: '域名后缀，如 .cn',
             whoisPlaceholder: 'Whois服务器，如 whois.cnnic.net.cn',
-        //     后缀已存在
+            //     后缀已存在
             suffixExist: '后缀已存在',
         }
     }

@@ -1,5 +1,6 @@
 <script setup lang="ts">
-const domainStore = useDomainStore();
+
+const domainStore = useDomainListStore();
 const SupportedTLDs = new Set(Object.keys(domainStore.SupportedTLDs));
 const isOpen = ref(false)
 const {t} = useI18n()
@@ -7,24 +8,24 @@ const {t} = useI18n()
 
 <template>
   <div>
-      <div title="Change Color">
-        <div
-            class="cursor-pointer	flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-700"
-            @click="isOpen = true"
-        >
-          <Icon name="mdi:about-circle-outline" class=" text-lg dark:text-white" />
-        </div>
+    <div title="Change Color">
+      <div
+          class="cursor-pointer	flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-700"
+          @click="isOpen = true"
+      >
+        <Icon name="mdi:about-circle-outline" class=" text-lg dark:text-white"/>
       </div>
+    </div>
     <NDrawer
         v-model:show="isOpen"
         placement="left"
         :default-width="502"
         resizable
     >
-        <NDrawerContent
-            :title="t('index.support')"
-            closable
-        >
+      <NDrawerContent
+          :title="t('index.support')"
+          closable
+      >
         <div class="flex flex-wrap mt-2 ">
       <span
           v-for="item in SupportedTLDs"
