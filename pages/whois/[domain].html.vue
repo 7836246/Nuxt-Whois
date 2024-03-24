@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import {ParseWhois} from "~/utils/whoisToJson";
 import {AdjustTimeToUTCOffset} from "~/utils/utc";
-import {useTimeStore} from "~/stores/time";
-import {useStyleStore} from "~/stores/style";
 
 const route = useRoute();
 const {domain} = route.params;
@@ -133,7 +131,7 @@ useHead({
         class="hover:bg-gray-100 text-gray-900 dark:hover:bg-gray-700 text-gray-200">
       <th class="p-4 text-left font-semibold text-gray-900 dark:text-gray-200">{{ t('result.rawData') }}</th>
       <td class="p-4 text-gray-900 dark:text-gray-200">
-        <UToggle color="sky" v-model="showRawData"/>
+        <NSwitch  v-model:value="showRawData"/>
       </td>
     </tr>
     </tbody>

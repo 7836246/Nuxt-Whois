@@ -1,14 +1,20 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  routeRules:{
+      '/admin/**':{ ssr : false }
+  },
   modules: [
-    '@nuxt/devtools',
-    '@nuxt/ui',
-    '@nuxtjs/i18n',
-    'nuxt-headlessui',
-    '@pinia/nuxt', // needed
-    '@pinia-plugin-persistedstate/nuxt',
+    '@nuxt/devtools',  // Devtools开发工具
+    '@nuxtjs/i18n', // 多语言
+    '@pinia/nuxt', // Pinia 持久化状态管理
+    '@pinia-plugin-persistedstate/nuxt', // Pinia 持久化状态管理插件
     'nuxt-simple-robots',
+     'nuxt-headlessui', // 组件库
+    '@bg-dev/nuxt-naiveui', // 组件库
+    '@nuxtjs/tailwindcss', // 组件库
+    'nuxt-icon',
+    '@nuxtjs/color-mode',
   ],
   features:{
       inlineStyles: true,
@@ -47,4 +53,14 @@ export default defineNuxtConfig({
   headlessui: {
     prefix: 'Headless'
   },
+  naiveui:{
+
+  },
+ colorMode: {
+     preference: 'system', // default value of $colorMode.preference
+     fallback: 'light', // fallback value if not system preference found
+     classPrefix: '',
+     classSuffix: '-mode',
+     storageKey: 'nuxt-color-mode'
+ }
 })

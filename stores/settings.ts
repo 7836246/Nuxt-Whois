@@ -1,4 +1,4 @@
-import { defineStore } from 'pinia'
+import {defineStore} from 'pinia'
 
 
 export const useSettingsStore = defineStore('settings', {
@@ -6,19 +6,29 @@ export const useSettingsStore = defineStore('settings', {
         const {t} = useI18n()
         return {
             isHistory: true,
+            isBulletin: true,
+            isDomainList: true,
             linkOpenType: 'currentWindow',
+            selectedOption: 'whois',
+            domainSearch: '',
         }
     },
     actions: {
         setHistory(value: boolean) {
             this.isHistory = value
         },
-        setLinkOpenType(value: string ) {
+        setLinkOpenType(value: string) {
             this.linkOpenType = value
         },
+        setSelectedOption(name: string) {
+            this.selectedOption = name;
+        }
     },
     getters: {
-        getHistory: (state) => state.isHistory,
+        getHistory: (state: any) => state.isHistory,
+        getDomain(state: any) {
+            return state.domainSearch;
+        }
     },
     persist: {
         storage: persistedState.cookiesWithOptions({

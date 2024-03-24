@@ -15,16 +15,17 @@ const {t} = useI18n()
           <Icon name="mdi:about-circle-outline" class=" text-lg dark:text-white" />
         </div>
       </div>
-    <USlideover
-        v-model="isOpen"
-        side="left"
+    <NDrawer
+        v-model:show="isOpen"
+        placement="left"
+        :default-width="502"
+        resizable
     >
-      <button>
-      <Icon name="lets-icons:close-ring-light" class="absolute top-2 right-2 text-gray-500 cursor-pointer" @click="isOpen = false" />
-      </button>
-        <div class="p-4 flex-1">
-        <div>{{t('index.support')}}：</div>
-        <div class="flex flex-wrap mt-2 p-5 overflow-y-auto max-h-[95vh]">
+        <NDrawerContent
+            :title="t('index.support')"
+            closable
+        >
+        <div class="flex flex-wrap mt-2 ">
       <span
           v-for="item in SupportedTLDs"
           :key="item"
@@ -33,8 +34,8 @@ const {t} = useI18n()
         {{ item }}
       </span>
         </div>
-      </div>
-    </USlideover>
+      </NDrawerContent>
+    </NDrawer>
   </div>
 </template>
 
