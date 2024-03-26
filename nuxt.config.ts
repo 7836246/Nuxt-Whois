@@ -19,9 +19,6 @@ export default defineNuxtConfig({
     features: {
         inlineStyles: true,
     },
-    css: [
-        '~/assets/css/main.css',
-    ],
     runtimeConfig: {
         public: {
             Domain: process.env.WebSiteDomain || 'Nuxt Whois',
@@ -61,8 +58,11 @@ export default defineNuxtConfig({
         classSuffix: '',
     },
     tailwindcss: {
+        cssPath: '~/assets/css/tailwind.css',
         exposeConfig: {
             write: true,
-        }
+
+        },
+        viewer: true,
     }
 })
