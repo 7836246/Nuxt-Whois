@@ -27,7 +27,7 @@ const handleReset = async () => {
 </script>
 
 <template>
-  <div class="setting mt-5 settings-grid">
+  <div class="setting mt-8 settings-grid">
     <n-h6 prefix="bar"> 基础设置</n-h6>
     <n-card class="set-item">
       <div class="top grid grid-cols-2 gap-4">

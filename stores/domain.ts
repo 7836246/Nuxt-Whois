@@ -4,12 +4,14 @@ import serversData from '~/server/whois/json/whois-servers.json';
 // 定义接口来描述state的结构
 interface DomainState {
     SupportedTLDs: Record<string, string>;
+    supportedTLDKeys: Set<string>;
 }
 
 export const useDomainListStore = defineStore('useDomainListStore', {
     // 使用箭头函数和类型注解定义state
     state: (): DomainState => ({
         SupportedTLDs: {...serversData},
+        supportedTLDKeys: new Set(Object.keys(serversData)) as any,
     }),
     actions: {
         async addSuffix(suffix: string, server: string) {
@@ -41,6 +43,14 @@ export const useDomainListStore = defineStore('useDomainListStore', {
                 // 更新本地状态
                 delete this.SupportedTLDs[suffix];
             }
+        }
+    },
+    getters: {
+        getSupportedTLDs(state: any) {
+            return state.SupportedTLDs;
+        },
+        getSupportedTLDKeys(state: any) {
+            return state.supportedTLDKeys;
         }
     },
     persist: {

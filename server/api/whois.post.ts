@@ -6,6 +6,6 @@ export default defineEventHandler(async (event) => {
         const res = await whois(body.domain)
         return res._raw
     } catch (e) {
-        return e
+        return new Error("接口不支持或者查询有误")
     }
 })

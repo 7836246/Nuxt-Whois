@@ -1,9 +1,10 @@
 <script setup lang="ts">
 
-const domainStore = useDomainListStore();
-const SupportedTLDs = new Set(Object.keys(domainStore.SupportedTLDs));
+const domainListStore = useDomainListStore();
+const SupportedTLDs = domainListStore.getSupportedTLDKeys
 const isOpen = ref(false)
 const {t} = useI18n()
+
 </script>
 
 <template>

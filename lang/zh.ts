@@ -65,7 +65,7 @@ export default defineI18nLocale(async locale => {
             formatDomain: '域名格式错误',
             //域名必须包含有效的顶级域
             validDomain: '域名必须包含有效的顶级域',
-            notFound: '未找到域名信息',
+            notFound: '未找到域名信息,可能是后缀不支持，也可能是当前 Api 不支持，请更换尝试！',
         },
         result: {
             result: '查询结果',

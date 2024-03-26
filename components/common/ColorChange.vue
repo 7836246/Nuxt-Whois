@@ -33,7 +33,7 @@ const availableColor = ref([
         <div
             class="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 dark:bg-gray-700"
         >
-          <Icon name="ph:palette-duotone" class=" text-lg dark:text-white" />
+          <Icon name="ph:palette-duotone" class=" text-lg dark:text-white"/>
         </div>
       </HeadlessListboxButton>
       <HeadlessListboxOptions
@@ -55,7 +55,7 @@ const availableColor = ref([
             {{ color.name }}
           </span>
           <span class="flex items-center justify-center text-sm">
-            <Icon :name="color.icon" class="text-base" />
+            <Icon :name="color.icon" class="text-base"/>
           </span>
         </HeadlessListboxOption>
       </HeadlessListboxOptions>

@@ -1,5 +1,11 @@
 <template>
-  <n-config-provider>
+  <n-config-provider
+      :theme="theme"
+      :theme-overrides="themeOverrides"
+      inline-theme-disabled
+      preflight-style-disabled
+  >
+    <n-global-style/>
     <n-modal-provider>
       <n-message-provider>
         <NuxtLayout>
@@ -10,9 +16,17 @@
       </n-message-provider>
     </n-modal-provider>
   </n-config-provider>
-
 </template>
 <script setup lang="ts">
+import {darkTheme, lightTheme} from 'naive-ui'
+import {naiveThemeOverrides} from "~/settings/settings";
+
+const colorMode = useColorMode()
+const themeOverrides = naiveThemeOverrides
+const theme = computed(() => {
+  return colorMode.value === 'system' ? (colorMode.value ? lightTheme : darkTheme) : colorMode.value === 'light' ? lightTheme : darkTheme
+})
+
 const whoisStore = useWhoisStore()
 const dnsStore = useDnsStore()
 const domainStore = useDomainStore()
@@ -21,24 +35,5 @@ dnsStore.newDnsList()
 domainStore.newDomainList()
 </script>
 <style>
-body {
-  background-color: #fff;
-  color: rgba(0, 0, 0, 0.8);
-}
 
-.dark-mode body {
-  background-color: #091a28;
-  color: #18181c;
-
-}
-
-.sepia-mode body {
-  background-color: #f1e7d0;
-  color: #433422;
-}
-
-.light-mode body {
-  background-color: #F1F3F4;
-  color: #433422;
-}
 </style>

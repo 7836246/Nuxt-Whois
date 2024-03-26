@@ -7,13 +7,13 @@ const {domain} = route.params;
 
 const {t} = useI18n()
 
-const domainData = domain.replace(/_/g, '.')
+const domainData = typeof domain === "string" ? domain?.replace(/_/g, '.') : "";
 
 const showRawData = ref(false);
 const timeStore = useTimeStore()
 const styleStore = useStyleStore()
 const settingsStore = useSettingsStore()
-
+styleStore.setIsPage(true)
 const localePath = useLocalePath()
 
 const {data, pending, error, refresh} = await useAsyncData(
@@ -36,17 +36,17 @@ if (!error.value && settingsStore.getHistory) {
   )
 }
 
-const parsedInfo = ParseWhois(data.value);
-styleStore.setIsPage(true)
+const parsedInfo = data.value ? ParseWhois(data.value) : {};
+
 useHead({
   title: `${domainData} - ${t('whois.title')}`,
   meta: [
     {
       name: 'description',
-      content: t('whois.description', { domain: domainData })
-    },{
+      content: t('whois.description', {domain: domainData})
+    }, {
       name: 'keywords',
-      content: t('whois.keywords', { domain: domainData })
+      content: t('whois.keywords', {domain: domainData})
     }
   ]
 })
@@ -54,6 +54,7 @@ useHead({
 
 <template>
   <table
+      v-if="data != ''"
       class="w-full bg-[#fffffe] p-4 shadow-lg rounded-lg mt-5 dark:bg-gray-800 dark:text-gray-200 text-white hover:bg-none">
     <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
     <tr v-if="parsedInfo.domainName"
@@ -131,23 +132,23 @@ useHead({
         class="hover:bg-gray-100 text-gray-900 dark:hover:bg-gray-700 text-gray-200">
       <th class="p-4 text-left font-semibold text-gray-900 dark:text-gray-200">{{ t('result.rawData') }}</th>
       <td class="p-4 text-gray-900 dark:text-gray-200">
-        <NSwitch  v-model:value="showRawData"/>
+        <NSwitch v-model:value="showRawData"/>
       </td>
     </tr>
     </tbody>
   </table>
 
   <!-- 公告部分 -->
-  <CommonBulletin v-if="error" class="mt-5"  >
+  <CommonBulletin v-if="data == ''" class="mt-5">
     <template #text>
-      <Icon name="bx:error" size="16px" color="red" />
+      <Icon name="bx:error" size="16px" color="red"/>
       {{ t('error.notFound') }}
     </template>
   </CommonBulletin>
 
   <div
       class="w-full  bg-[#fffffe] mt-5 p-4 shadow-lg rounded-lg whitespace-pre-wrap dark:text-gray-200 dark:bg-gray-800"
-      v-if="showRawData">
+  >
     {{ data }}
   </div>
 </template>
