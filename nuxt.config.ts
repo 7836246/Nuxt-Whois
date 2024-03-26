@@ -19,6 +19,9 @@ export default defineNuxtConfig({
     features: {
         inlineStyles: true,
     },
+    css: [
+        '~/assets/css/main.css',
+    ],
     runtimeConfig: {
         public: {
             Domain: process.env.WebSiteDomain || 'Nuxt Whois',
@@ -53,9 +56,7 @@ export default defineNuxtConfig({
     headlessui: {
         prefix: 'Headless'
     },
-    naiveui: {
-        colorModePreference: "light",
-    },
+    naiveui: {},
     colorMode: {
         classSuffix: '',
     },

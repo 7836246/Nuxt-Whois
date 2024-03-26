@@ -23,6 +23,7 @@ import {naiveThemeOverrides} from "~/settings/settings";
 
 const colorMode = useColorMode()
 const themeOverrides = naiveThemeOverrides
+
 const theme = computed(() => {
   return colorMode.value === 'system' ? (colorMode.value ? lightTheme : darkTheme) : colorMode.value === 'light' ? lightTheme : darkTheme
 })
