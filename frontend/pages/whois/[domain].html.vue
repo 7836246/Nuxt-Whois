@@ -1,5 +1,7 @@
 <script setup lang="ts">
 
+import {useCurrentServer} from "~/composables/useCurrentServer";
+
 definePageMeta({
   stylePage: true,
 })

@@ -41,6 +41,9 @@ export const useConfigStore = defineStore('useConfig', {
                 this.configServer.domainArr = []
             }
         },
+        setCurrentServer(configServer: any) {
+            this.currentServer = configServer
+        },
         setCurrentServerWhois(whois: any) {
             this.currentServer.whois = whois
         },
