@@ -1,0 +1,47 @@
+[
+  {
+    "label": "本地接口",
+    "name": "nuxt",
+    "order": 0,
+    "show": true,
+    "disabled": false,
+    "iName": "本地 DNS",
+    "flag": "material-symbols:dns-outline"
+  },
+  {
+    "label": "Google",
+    "name": "google",
+    "order": 1,
+    "show": true,
+    "disabled": false,
+    "iName": "Google",
+    "flag": "flat-color-icons:google"
+  },
+  {
+    "label": "AliYun",
+    "name": "aliyun",
+    "order": 2,
+    "show": true,
+    "disabled": false,
+    "iName": "AliYun",
+    "flag": "ant-design:aliyun-outlined"
+  },
+  {
+    "label": "Tencent",
+    "name": "tencent",
+    "order": 3,
+    "show": true,
+    "disabled": false,
+    "iName": "Tencent",
+    "flag": "emojione:cloud"
+  },
+  {
+    "label": "Cloudflare",
+    "name": "cloudflare",
+    "order": 4,
+    "show": true,
+    "disabled": false,
+    "iName": "CloudFlare",
+    "flag": "skill-icons:cloudflare-light"
+  }
+]

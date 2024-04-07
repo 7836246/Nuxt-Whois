@@ -1,0 +1,34 @@
+env: local
+http:
+  port: 8000
+
+#网站配置
+login:
+  username: admin
+  password: 123456
+siteConfig:
+  logoLeftText: NuxtLeftLogo
+  logoRightText: NuxtRightLogo
+  defaultSelectOptions:
+    - label: Whois
+      value: whois
+    - label: Dns
+      value: dns
+    - label: Domain
+      value: domain
+  whoisSeverApi:
+    - whocx: https://who.cx/api/whois_extract
+    - tianhu: https://api.tian.hu/whois.php
+  dnsSeverApi:
+    - google: https://dns.google/resolve
+    - cloudflare: http://1.1.1.1/dns-query
+    - aliyun: https://223.5.5.5/resolve
+    - tencent: https://doh.pub/dns-query
+log:
+  log_level: debug
+  encoding: console           # json or console
+  log_file_name: "./storage/logs/server.log"
+  max_backups: 30              # 日志文件最多保存多少个备份
+  max_age: 7                   #  文件最多保存多少天
+  max_size: 1024               #  每个日志文件保存的最大尺寸 单位：M
+  compress: true               # 是否压缩

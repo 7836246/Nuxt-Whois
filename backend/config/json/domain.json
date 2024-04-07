@@ -1,0 +1,18 @@
+[
+  {
+    "label": "本地接口",
+    "name": "nuxt",
+    "order": 0,
+    "show": false,
+    "disabled": true,
+    "iName": "本地 DNS",
+    "flag": "material-symbols:dns-outline"
+  },
+  {
+    "label": "TIAN.HU",
+    "name": "tianhu",
+    "order": 1,
+    "show": true,
+    "disabled": false
+  }
+]

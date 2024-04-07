@@ -1,0 +1,23 @@
+[
+  {
+    "label": "本地接口",
+    "name": "nuxt",
+    "order": 0,
+    "show": true,
+    "disabled": false
+  },
+  {
+    "label": "WHO.CX",
+    "name": "whocx",
+    "order": 1,
+    "show": false,
+    "disabled": true
+  },
+  {
+    "label": "TIAN.HU",
+    "name": "tianhu",
+    "order": 2,
+    "show": true,
+    "disabled": false
+  }
+]
