@@ -1,0 +1,31 @@
+# 不同环境下产生的日志
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+.cache
+.eslintcache
+.stylelintcache
+
+# 项目构建相关的文件
+node_modules
+dist
+dist-ssr
+*.local
+
+# 忽略自动生成的文件
+/src/types/auto-imports.d.ts
+/src/types/components.d.ts
+
+# 编辑器相关的文件
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
