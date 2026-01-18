@@ -19,7 +19,8 @@
 - **核心框架**: [Nuxt 4.x](https://nuxt.com) (Latest)
 - **语言**: TypeScript
 - **包管理**: pnpm
-- **UI 组件**: (待定/重构中)
+- **UI 组件**: [Nuxt UI](https://ui.nuxt.com)
+- **CSS 框架**: [Tailwind CSS](https://tailwindcss.com)
 
 ## 📂 目录结构
 
