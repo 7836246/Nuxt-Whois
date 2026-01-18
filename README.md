@@ -1,19 +1,75 @@
+# Nuxt Minimal Starter
 
-<div align="center">
+Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-<h1 align="center">Nuxt-Whois</h1>
-<p align="center">一款好用的 Whois工具，最新技术栈的标准化规范项目。</p> 
+## Setup
 
+Make sure to install dependencies:
 
-# 目录结构
-    - server 后端APi
-    - admin  管理后台
-    - web    前端展示
+```bash
+# npm
+npm install
 
-Todo: 当前 v2 版本正在制作中,敬请期待 !
+# pnpm
+pnpm install
 
-# 免责声明
-本项目开源仅供学习使用，不得用于任何违法用途，否则后果自负，与本人无关。使用请保留项目地址谢谢。
+# yarn
+yarn install
 
-# License
-本项目遵循 [GPL-3.0 协议](./LICENSE)许可证。
+# bun
+bun install
+```
+
+## Development Server
+
+Start the development server on `http://localhost:3000`:
+
+```bash
+# npm
+npm run dev
+
+# pnpm
+pnpm dev
+
+# yarn
+yarn dev
+
+# bun
+bun run dev
+```
+
+## Production
+
+Build the application for production:
+
+```bash
+# npm
+npm run build
+
+# pnpm
+pnpm build
+
+# yarn
+yarn build
+
+# bun
+bun run build
+```
+
+Locally preview production build:
+
+```bash
+# npm
+npm run preview
+
+# pnpm
+pnpm preview
+
+# yarn
+yarn preview
+
+# bun
+bun run preview
+```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
