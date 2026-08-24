@@ -22,5 +22,9 @@ logs
 .env
 .env.*
 !.env.example
-\n# Cache\nnode-compile-cache
-\n# Documentation\ndocs/
+
+# Cache
+node-compile-cache
+
+# Documentation
+docs/
